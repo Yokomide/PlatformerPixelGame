@@ -10,13 +10,15 @@ public class HeroAttack : MonoBehaviour
     private bool _isAttackRadius = false;
     private EnemyStats _enemyStats;
     private CapsuleCollider2D _attackZone;
+    private AudioSource _attackSound;
 
-    
+
     // Start is called before the first frame update
     void Start()
     {
         _anim = GetComponent<Animator>();
         _attackZone = gameObject.GetComponent<CapsuleCollider2D>();
+        _attackSound = GetComponent<AudioSource>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -47,9 +49,12 @@ public class HeroAttack : MonoBehaviour
 
     void Attack()
     {
+        _attackSound.Play();
         if (_isAttackRadius == true)
         {
             _enemyStats._enemyHP = _enemyStats._enemyHP - _heroDamage;
         }
     }
+
+    
 }

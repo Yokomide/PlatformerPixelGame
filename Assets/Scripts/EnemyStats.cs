@@ -6,12 +6,13 @@ public class EnemyStats : MonoBehaviour
 {
     public float _maxEnemyHp = 100;
     public float _enemyHP = 100;
-
+    private Sounds _mobSounds;
     private Animator _anim;
     // Start is called before the first frame update
     void Start()
     {
         _anim = GetComponent<Animator>();
+        _mobSounds = GetComponent<Sounds>();
     }
 
     // Update is called once per frame
@@ -21,8 +22,7 @@ public class EnemyStats : MonoBehaviour
         {
             _anim.SetTrigger("takedmg");
             _maxEnemyHp = _enemyHP;
-            Debug.Log("Сработало");
-            //_anim.ResetTrigger("takedmg");
+            _mobSounds.HitSound();
         }
             if (_enemyHP <= 0)
         {
