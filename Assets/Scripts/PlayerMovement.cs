@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     float horizontalMove = 0f;
     private bool jump = false;
 
+    public float HeroHP = 100;
     void Start()
     {
         _anim = GetComponent<Animator>();
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _anim.SetFloat("speed", Mathf.Abs(horizontalMove));
         
+        /*
         if (Input.GetMouseButtonDown(0))
         {
             _anim.SetBool("attack", true);
@@ -29,12 +31,16 @@ public class PlayerMovement : MonoBehaviour
         {
             _anim.SetBool("attack", false); 
         }
+        */
         
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
         }
-        
+        if (HeroHP <= 0)
+        {
+            Destroy(gameObject);
+        }
             
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
     }

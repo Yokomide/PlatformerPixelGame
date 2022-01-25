@@ -9,8 +9,11 @@ public class ButtonOnOff : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D other)
     {
+        if(other.gameObject.CompareTag("Player"))
+        {
         transform.GetChild(0).gameObject.SetActive(true);
         _isOnTrigger = true;
+        }
 
     }
     
