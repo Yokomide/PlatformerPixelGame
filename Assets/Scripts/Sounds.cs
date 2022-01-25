@@ -18,7 +18,7 @@ public class Sounds: MonoBehaviour
     {
         randomSound.clip = audioSources[Random.Range(1, audioSources.Length)];
         randomSound.Play();
-        CallAudio();
+
     }
 
     void CallAudio()

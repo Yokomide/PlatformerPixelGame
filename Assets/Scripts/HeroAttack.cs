@@ -11,7 +11,7 @@ public class HeroAttack : MonoBehaviour
     private EnemyStats _enemyStats;
     private CapsuleCollider2D _attackZone;
     private AudioSource _attackSound;
-
+    private List<GameObject> Enemies;
 
     // Start is called before the first frame update
     void Start()
@@ -19,12 +19,14 @@ public class HeroAttack : MonoBehaviour
         _anim = GetComponent<Animator>();
         _attackZone = gameObject.GetComponent<CapsuleCollider2D>();
         _attackSound = GetComponent<AudioSource>();
+        Enemies = new List<GameObject>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {
+            Enemies.Add(other.gameObject);
             _isAttackRadius = true;
             _enemyStats = other.GetComponent<EnemyStats>();
         }

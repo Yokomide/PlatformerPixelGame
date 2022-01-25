@@ -12,7 +12,8 @@ public class EnemyMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-     theScale = transform.localScale;
+        Hero = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        theScale = transform.localScale;
      rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
     }
 
