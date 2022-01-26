@@ -21,18 +21,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         _anim.SetFloat("speed", Mathf.Abs(horizontalMove));
-        
-        /*
-        if (Input.GetMouseButtonDown(0))
-        {
-            _anim.SetBool("attack", true);
-        }
-        else
-        {
-            _anim.SetBool("attack", false); 
-        }
-        */
-        
+
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
