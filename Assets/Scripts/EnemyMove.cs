@@ -9,9 +9,12 @@ public class EnemyMove : MonoBehaviour
     private Rigidbody2D rigidbody2D;
     private  Vector2 theScale;
     public float angerZone = 5f;
+    private Animator _anim;
+
     // Start is called before the first frame update
     void Start()
     {
+        _anim = gameObject.GetComponent<Animator>();
         Hero = GameObject.FindWithTag("Player").GetComponent<Transform>();
         theScale = transform.localScale;
      rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
@@ -27,12 +30,18 @@ public class EnemyMove : MonoBehaviour
         }
         if (distToPlayer <= 1f)
         {
-            StopChase();
+            StopChase();   
         }
+        if(distToPlayer >= angerZone)
+        {
+            _anim.SetBool("walking", false);
+        }
+
     }
 
     void StartChase()
     {
+        _anim.SetBool("walking", true);
         if(transform.position.x < Hero.transform.position.x)
         {
             rigidbody2D.velocity = new Vector2(_moveSpeed, -1.5f);
@@ -48,4 +57,11 @@ public class EnemyMove : MonoBehaviour
     void StopChase(){
         rigidbody2D.velocity = new Vector2(0,-1.5f);
     }
+
+    public void StopAttack()
+    {
+        rigidbody2D.velocity = new Vector2(0, -1.5f);
+    }
+
+
 }

@@ -4,37 +4,20 @@ using UnityEngine;
 
 public class HeroAttack : MonoBehaviour
 {
-    public int _heroDamage = 100;
-    private Animator _anim;
-    
-    private bool _isAttackRadius = false;
-    private EnemyStats _enemyStats;
-    private CapsuleCollider2D _attackZone;
-    private AudioSource _attackSound;
-    private List<GameObject> Enemies;
+    public float attackRange = 0.5f;
 
-    // Start is called before the first frame update
+    public int attackDamage = 20;
+
+    public Transform attackPoint;
+    public LayerMask enemyLayers;
+
+    private Animator _anim;
+    private AudioSource _attackSound;
+
     void Start()
     {
         _anim = GetComponent<Animator>();
-        _attackZone = gameObject.GetComponent<CapsuleCollider2D>();
         _attackSound = GetComponent<AudioSource>();
-        Enemies = new List<GameObject>();
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            Enemies.Add(other.gameObject);
-            _isAttackRadius = true;
-            _enemyStats = other.GetComponent<EnemyStats>();
-        }
-
-    }
-    void OnTriggerExit2D(Collider2D other)
-    {
-        _isAttackRadius = false;
     }
     
     void Update()
@@ -51,12 +34,21 @@ public class HeroAttack : MonoBehaviour
 
     void Attack()
     {
-        _attackSound.Play();
-        if (_isAttackRadius == true)
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+
+        foreach(Collider2D enemy in hitEnemies)
         {
-            _enemyStats._enemyHP = _enemyStats._enemyHP - _heroDamage;
+            enemy.GetComponent<EnemyStats>().TakeDamage(attackDamage);
         }
+        _attackSound.Play();
     }
 
-    
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+            return;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+
 }

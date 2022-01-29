@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3431839003340363411}
   - component: {fileID: 3431839003340363436}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Point Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 3431839003416131286}
   - component: {fileID: 3431839003416131285}
   - component: {fileID: 3431839003416131287}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Zombie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -226,8 +226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd8b2592acd29f84997530b67ecc1a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxEnemyHp: 100
-  _enemyHP: 100
+  MaxEnemyHp: 100
+  EnemyHP: 100
 --- !u!114 &3431839003416131290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,7 +465,7 @@ GameObject:
   - component: {fileID: 3431839005163649538}
   - component: {fileID: 3431839005163649564}
   - component: {fileID: 3431839005163649539}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: AttackBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

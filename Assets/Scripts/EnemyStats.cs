@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyStats : MonoBehaviour
 {
-    public float _maxEnemyHp = 100;
-    public float _enemyHP = 100;
+    public float MaxEnemyHp = 100;
+    public float EnemyHP = 100;
     private Sounds _mobSounds;
     private Animator _anim;
     // Start is called before the first frame update
@@ -13,20 +13,22 @@ public class EnemyStats : MonoBehaviour
     {
         _anim = GetComponent<Animator>();
         _mobSounds = GetComponent<Sounds>();
+        EnemyHP = MaxEnemyHp;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TakeDamage(int damage)
     {
-        if (_enemyHP < _maxEnemyHp)
+        EnemyHP -= damage;
+        _anim.SetTrigger("takedmg");
+        _mobSounds.HitSound();
+        if (EnemyHP <= 0)
         {
-            _anim.SetTrigger("takedmg");
-            _maxEnemyHp = _enemyHP;
-            _mobSounds.HitSound();
+            Die();
         }
-            if (_enemyHP <= 0)
-        {
-            Destroy(gameObject);
-        }
+    }
+
+    void Die()
+    {
+        Destroy(gameObject);
     }
 }

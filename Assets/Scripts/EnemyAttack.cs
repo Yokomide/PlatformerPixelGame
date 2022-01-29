@@ -34,6 +34,7 @@ public class EnemyAttack : MonoBehaviour
     {
          if(_isAttackZone == true){
             _anim.SetBool("attack", true);
+            gameObject.GetComponent<EnemyMove>().StopAttack();
         }
         else{
 
