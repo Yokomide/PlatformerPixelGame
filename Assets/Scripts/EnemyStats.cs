@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyStats : MonoBehaviour
 {
-    public float MaxEnemyHp = 100;
+    public float MaxEnemyHp = 100;  
     public float EnemyHP = 100;
     private Sounds _mobSounds;
     private Animator _anim;
@@ -20,7 +20,10 @@ public class EnemyStats : MonoBehaviour
     {
         EnemyHP -= damage;
         _anim.SetTrigger("takedmg");
-        _mobSounds.HitSound();
+        if (_mobSounds != null)
+        {
+            _mobSounds.HitSound();
+        }
         if (EnemyHP <= 0)
         {
             Die();

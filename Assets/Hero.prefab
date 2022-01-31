@@ -76,7 +76,6 @@ GameObject:
   - component: {fileID: 3014141256128521642}
   - component: {fileID: 3014141256128521645}
   - component: {fileID: 3014141256128521634}
-  - component: {fileID: 3014141256128521633}
   - component: {fileID: 3014141256128521635}
   m_Layer: 6
   m_Name: Hero
@@ -236,6 +235,7 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 3014141255530407087}
   m_CeilingCheck: {fileID: 3014141255370468983}
   m_CrouchDisableCollider: {fileID: 0}
+  m_Grounded: 0
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -277,22 +277,6 @@ CircleCollider2D:
   m_Offset: {x: -0.04, y: -0.4}
   serializedVersion: 2
   m_Radius: 0.31
---- !u!58 &3014141256128521633
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3014141256128521653}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.58, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.32
 --- !u!114 &3014141256128521635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,4 +289,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7434f8d2cd58035498844427837c57bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _heroDamage: 25
+  attackRange: 0.5
+  attackDamage: 20
+  attackPoint: {fileID: 0}
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 0
